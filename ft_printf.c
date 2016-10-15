@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 18:24:25 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/14 21:48:11 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/14 21:57:34 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	set_lenmod(char **pos)
 		g_lenmod = 2;
 	else if ((*pos)[0] == 'l' && (*pos)[1] != 'l')
 		g_lenmod = 3;
-	else if ((*pos)[0] == '.')
+	else if ((*pos)[0] == 'l')
 		g_lenmod = 4;
 	else if ((*pos)[0] == 'j')
 		g_lenmod = 5;
