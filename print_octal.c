@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 15:49:42 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/14 16:55:42 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/14 21:41:39 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,18 @@
 static int	apply_flags(wchar_t *str)
 {
 	int		ret;
+	char	first;
 
+	first = *(char*)str;
 	prepend_char(&str, '0', g_prec);
 	if (g_zero == 1 && g_minus == 0 && g_prec < 0)
 	{
-		if (g_hashtag == 1)
+		if (g_hashtag == 1 && first != '0')
 			prepend_char(&str, '0', g_minwid - 1);
 		else
 			prepend_char(&str, '0', g_minwid);
 	}
-	if (g_hashtag == 1)
+	if (g_hashtag == 1 && first != '0')
 		prepend_str(&str, L"0");
 	if (g_minus == 1)
 		append_char(&str, ' ', g_minwid);

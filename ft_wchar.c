@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 17:35:38 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/14 20:20:39 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/14 21:32:09 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ int		ft_wstrlen(wchar_t *str)
 
 void	ft_wputchar(wchar_t c)
 {
-	write(1, &c, sizeof(c));
+	write(1, &c, 1);
 }
 
 void	ft_wputstr(wchar_t *str)
 {
 	int		len;
+	int		i;
 
 	len = ft_wstrlen(str);
-	write(1, str, len * sizeof(*str));
+	i = -1;
+	while (++i < len)
+		ft_wputchar(str[i]);
 }
 
 wchar_t	*str_to_wstr(char *str)

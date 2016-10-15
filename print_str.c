@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 17:13:43 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/14 20:18:24 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/14 21:31:41 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int		apply_flags(wchar_t *str, int is_percent)
 	else
 		prepend_char(&str, ' ', g_minwid);
 	len = ft_wstrlen(str);
-	write(1, str, sizeof(*str) * len);
+	ft_wputstr(str);
 	free(str);
 	return (len);
 }
