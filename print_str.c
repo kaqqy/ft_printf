@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 17:13:43 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/14 21:31:41 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/17 16:45:06 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int				print_char(va_list *args)
 	return (apply_flags(str, 0));
 }
 
-int				print_percent()
+int				print_percent(void)
 {
 	wchar_t	*str;
 
