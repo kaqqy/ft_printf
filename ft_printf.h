@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 20:33:57 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/14 18:24:07 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/17 17:02:51 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			print_pointer(va_list *args);
 int			print_octal(va_list *args);
 int			print_string(va_list *args);
 int			print_char(va_list *args);
-int			print_percent(va_list *args);
+int			print_percent(void);
 extern int	g_hashtag;
 extern int	g_zero;
 extern int	g_minus;

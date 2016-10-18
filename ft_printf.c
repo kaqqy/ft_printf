@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 18:24:25 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/14 21:57:34 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/17 17:02:44 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int		print_conversion(char **pos, va_list *args)
 	if ((*pos)[-1] == 'p')
 		return (print_pointer(args));
 	if ((*pos)[-1] == '%')
-		return (print_percent(args));
+		return (print_percent());
 	(*pos)--;
 	return (0);
 }
