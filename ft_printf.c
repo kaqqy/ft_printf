@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 20:06:35 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 17:03:07 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/25 17:37:18 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 
-int		print_conversion(char **pos, va_list *args, t_flags *f)
+static int	print_conversion(char **pos, va_list *args, t_flags *f)
 {
 	set_arg(pos, args, f);
 	set_flags(pos, f);
@@ -43,7 +43,7 @@ int		print_conversion(char **pos, va_list *args, t_flags *f)
 	return (0);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	int		num_char;
 	char	*pos;
