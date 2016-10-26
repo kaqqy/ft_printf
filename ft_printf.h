@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 21:51:29 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 22:54:28 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 14:27:16 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,16 @@ char			*ft_strdup(char *str);
 void			ft_putstr(char *str);
 char			*ft_strsub(char *str, int start, int len);
 void			ft_strtoupper(char *str);
+void			ft_strrev(char *str);
 char			*wchar_to_str(wchar_t c);
 char			*get_signed_int(va_list *args, t_flags *f, int base);
 char			*get_unsigned_int(va_list *args, t_flags *f, int base);
-char			*get_float(va_list *args, t_flags *f);
+char			*get_float(long double a);
 int				print_decimal(char *str, t_flags *f);
 int				print_hex(char *str, t_flags *f, int fmt);
 int				print_octal(char *str, t_flags *f);
 int				print_string(va_list *args, t_flags *f);
 int				print_char(va_list *args, t_flags *f);
 int				print_not_flag(t_flags *f);
-int				print_float(char *str, t_flags *f);
+int				print_float(va_list *args, t_flags *f);
 #endif

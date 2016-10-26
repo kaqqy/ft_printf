@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 21:36:33 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 22:35:25 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 14:27:47 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,13 @@ static void	fill_float_arr(char *str, unsigned long *frac, int exp, int sign)
 		str[0] = '-';
 }
 
-char		*get_float(va_list *args, t_flags *f)
+char		*get_float(long double a)
 {
-	long double		a;
 	unsigned long	*frac;
 	int				i;
 	int				exp;
 	char			*str;
 
-	if (f->lenmod == 7)
-		a = va_arg(*args, long double);
-	else
-		a = va_arg(*args, double);
 	if (!(str = (char*)malloc(sizeof(*str) * 12001)))
 		return (NULL);
 	i = -1;

@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 20:06:35 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 21:39:48 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 14:24:44 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static int	print_conversion_p2(char **pos, va_list *args, t_flags *f)
 {
 	if ((*pos)[-1] == 'f' || (*pos)[-1] == 'F')
-		return (print_float(get_float(args, f), f));
+		return (print_float(args, f));
 	if ((*pos)[-1] != '\0')
 		return (print_not_flag(f));
 	(*pos)--;
