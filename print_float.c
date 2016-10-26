@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 22:27:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/26 15:22:06 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 16:46:30 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,29 @@ static char	*round_float(char *str, int prec)
 	return (str);
 }
 
-static int	handle_nan(long double a, t_flags *f)
+static int	handle_nan(long double a, t_flags *f, int ret)
 {
 	long double	nan;
-	long long	*x;
-	long long	*y;
-	int			ret;
 	char		*str;
 
 	nan = 0.0 / 0.0;
-	x = (long long*)&nan;
-	y = (long long*)&a;
-	if (x[0] == y[0] && x[1] == y[1])
+	if (((long long*)&nan)[0] == ((long long*)&a)[0]
+			&& ((long long*)&nan)[1] == ((long long*)&a)[1])
 		str = ft_strdup("nan");
-	else if (a == 1.0 / 0.0)
+	else if (a == 1.0 / 0.0 || a == -1.0 / 0.0)
 		str = ft_strdup("inf");
-	else if (a == -1.0 / 0.0)
-		str = ft_strdup("-inf");
 	else
 		return (-1);
-	if (f->conv == 'F')
-		ft_strtoupper(str);
+	(f->conv == 'F') ? ft_strtoupper(str) : 0;
+	if (f->sign == -1)
+		prepend_str(&str, "-");
+	else if (f->plus == 1)
+		prepend_str(&str, "+");
+	else if (f->space == 1)
+		prepend_str(&str, " ");
+	if (f->minus == 1)
+		append_char(&str, ' ', f->minwid);
+	prepend_char(&str, ' ', f->minwid);
 	ft_putstr(str);
 	ret = ft_strlen(str);
 	free(str);
@@ -71,6 +73,8 @@ static int	apply_flags(char *inte, char *frac, t_flags *f)
 		prepend_str(&inte, "+");
 	else if (f->space == 1)
 		prepend_str(&inte, " ");
+	if (f->minus == 1)
+		append_char(&inte, ' ', f->minwid);
 	prepend_char(&inte, ' ', f->minwid);
 	ret = ft_strlen(inte);
 	ft_putstr(inte);
@@ -90,7 +94,7 @@ int			print_float(va_list *args, t_flags *f)
 		a = va_arg(*args, long double);
 	else
 		a = va_arg(*args, double);
-	if ((i = handle_nan(a, f)) >= 0)
+	if ((i = handle_nan(a, f, 0)) >= 0)
 		return (i);
 	if (f->prec < 0)
 		f->prec = 6;
