@@ -6,19 +6,26 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 17:06:49 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 18:09:45 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/25 22:53:01 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_printf.h"
 
-int		print_decimal(char *str, t_flags *f)
+static void	empty_string(char **str)
+{
+	free(*str);
+	*str = (char*)malloc(sizeof(**str));
+	(*str)[0] = '\0';
+}
+
+int			print_decimal(char *str, t_flags *f)
 {
 	int		ret;
 
 	if (f->num == 0 && f->prec == 0)
-		ft_strsub(&str, 0);
+		empty_string(&str);
 	insert_commas(&str, f->apos);
 	prepend_char(&str, '0', f->prec);
 	if (f->zero == 1 && f->minus == 0 && f->prec < 0)
@@ -42,12 +49,12 @@ int		print_decimal(char *str, t_flags *f)
 	return (ret);
 }
 
-int		print_octal(char *str, t_flags *f)
+int			print_octal(char *str, t_flags *f)
 {
 	int		ret;
 
 	if (f->num == 0 && f->prec == 0)
-		ft_strsub(&str, 0);
+		empty_string(&str);
 	prepend_char(&str, '0', f->prec);
 	if (f->zero == 1 && f->minus == 0 && f->prec < 0)
 	{
@@ -68,12 +75,12 @@ int		print_octal(char *str, t_flags *f)
 	return (ret);
 }
 
-int		print_hex(char *str, t_flags *f, int fmt)
+int			print_hex(char *str, t_flags *f, int fmt)
 {
 	int		ret;
 
 	if (f->num == 0 && f->prec == 0)
-		ft_strsub(&str, 0);
+		empty_string(&str);
 	prepend_char(&str, '0', f->prec);
 	if (f->zero == 1 && f->minus == 0 && f->prec < 0)
 	{

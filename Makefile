@@ -6,14 +6,14 @@
 #    By: jshi <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/18 21:00:39 by jshi              #+#    #+#              #
-#    Updated: 2016/10/25 17:06:42 by jshi             ###   ########.fr        #
+#    Updated: 2016/10/25 22:07:21 by jshi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 FILES = ft_printf parse_conversion ft_itoa_base concat ft1 wchar print_integer \
-		print_string print_char
+		print_string print_char print_float get_float
 SRC_FILES = $(addsuffix .c,$(FILES))
 
 OBJ_FILES = $(addsuffix .o,$(FILES))

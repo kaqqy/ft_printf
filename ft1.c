@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/21 15:09:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 16:19:42 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/25 22:57:51 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,18 @@ void	ft_putstr(char *str)
 		write(1, str, ft_strlen(str));
 }
 
-void	ft_strsub(char **str, int len)
+char	*ft_strsub(char *str, int start, int len)
 {
 	int		slen;
 	char	*sub;
 
-	if (!str || !*str)
-		return ;
-	slen = ft_strlen(*str);
-	if (slen <= len)
-		return ;
-	if (!(sub = (char*)malloc(sizeof(*sub) * (len + 1))))
-	{
-		free(*str);
-		*str = NULL;
-		return ;
-	}
+	if (!str || (slen = ft_strlen(str)) <= start + len ||
+			!(sub = (char*)malloc(sizeof(*sub) * (len + 1))))
+		return (NULL);
 	sub[len] = '\0';
 	while (len--)
-		sub[len] = (*str)[len];
-	free(*str);
-	*str = sub;
+		sub[len] = str[start + len];
+	return (sub);
 }
 
 void	ft_strtoupper(char *str)
