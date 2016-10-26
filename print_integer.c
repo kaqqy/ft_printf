@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 17:06:49 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 17:23:19 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/25 18:09:45 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		print_decimal(char *str, t_flags *f)
 
 	if (f->num == 0 && f->prec == 0)
 		ft_strsub(&str, 0);
+	insert_commas(&str, f->apos);
 	prepend_char(&str, '0', f->prec);
 	if (f->zero == 1 && f->minus == 0 && f->prec < 0)
 	{
@@ -34,8 +35,7 @@ int		print_decimal(char *str, t_flags *f)
 		prepend_str(&str, " ");
 	if (f->minus == 1)
 		append_char(&str, ' ', f->minwid);
-	else
-		prepend_char(&str, ' ', f->minwid);
+	prepend_char(&str, ' ', f->minwid);
 	ret = ft_strlen(str);
 	ft_putstr(str);
 	free(str);

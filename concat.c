@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/21 14:08:53 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 13:53:00 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/25 18:30:46 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,33 @@ void	append_str(char **dst, char *src)
 		cat[dst_len] = (*dst)[dst_len];
 	free(*dst);
 	*dst = cat;
+}
+
+void	insert_commas(char **str, int i)
+{
+	int		ind;
+	int		count;
+	char	*new;
+
+	if (!i || !str || !*str)
+		return ;
+	ind = ft_strlen(*str) - 1;
+	i = ind + ind / 3 + 1;
+	if (!(new = (char*)malloc(sizeof(*new) * (i + 1))))
+	{
+		free(*str);
+		*str = NULL;
+		return ;
+	}
+	new[i] = '\0';
+	count = -1;
+	while (i-- && ++count >= 0)
+	{
+		if (count % 4 == 3)
+			new[i] = ',';
+		else
+			new[i] = (*str)[ind--];
+	}
+	free(*str);
+	*str = new;
 }

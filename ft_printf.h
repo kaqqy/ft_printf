@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 21:51:29 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 17:06:14 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/25 18:32:13 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_flags
 	int			minus;
 	int			plus;
 	int			space;
+	int			apos;
 	int			minwid;
 	int			prec;
 	int			lenmod;
@@ -42,6 +43,7 @@ void			prepend_char(char **str, char c, int min_len);
 void			append_char(char **str, char c, int min_len);
 void			prepend_str(char **dst, char *src);
 void			append_str(char **dst, char *src);
+void			insert_commas(char **str, int i);
 int				ft_strlen(char *str);
 char			*ft_strdup(char *str);
 void			ft_putstr(char *str);

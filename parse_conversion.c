@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 21:44:08 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 15:18:49 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/25 18:04:42 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ void	set_flags(char **pos, t_flags *f)
 	f->minus = 0;
 	f->plus = 0;
 	f->space = 0;
+	f->apos = 0;
 	while (**pos == '#' || **pos == '0' || **pos == '-' || **pos == '+' ||
-			**pos == ' ')
+			**pos == ' ' || **pos == '\'')
 	{
 		if (**pos == '#')
 			f->pound = 1;
@@ -52,6 +53,8 @@ void	set_flags(char **pos, t_flags *f)
 			f->plus = 1;
 		else if (**pos == ' ')
 			f->space = 1;
+		else if (**pos == '\'')
+			f->apos = 1;
 		(*pos)++;
 	}
 }
