@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 21:36:33 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/26 14:27:47 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 20:07:18 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	add_num(char *dst, char *src)
 	free(src);
 }
 
-static void	fill_float_arr(char *str, unsigned long *frac, int exp, int sign)
+static void	fill_float_arr(char *str, unsigned long *frac, int exp)
 {
 	unsigned long	bit;
 
@@ -89,9 +89,6 @@ static void	fill_float_arr(char *str, unsigned long *frac, int exp, int sign)
 		exp--;
 		bit >>= 1;
 	}
-	str[0] = '+';
-	if (sign < 0)
-		str[0] = '-';
 }
 
 char		*get_float(long double a)
@@ -109,6 +106,6 @@ char		*get_float(long double a)
 	str[12000] = '\0';
 	frac = (unsigned long*)&a;
 	exp = (frac[1] & ((1 << 15) - 1)) - (1 << 14) + 1;
-	fill_float_arr(str, frac, exp, a < 0 ? -1 : 1);
+	fill_float_arr(str, frac, exp);
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 22:27:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/26 17:10:11 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 20:25:12 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,19 @@ int			handle_nan(long double a, t_flags *f, int ret)
 	return (ret);
 }
 
-static int	apply_flags(char *inte, char *frac, t_flags *f)
+static int	apply_flags(char *inte, char *frac, t_flags *f, int ret)
 {
-	int		ret;
-
 	insert_commas(&inte, f->apos);
 	if (f->pound == 1 || ft_strlen(frac) > 0)
 		append_str(&inte, ".");
 	append_str(&inte, frac);
 	free(frac);
+	if (f->zero == 1 && f->minus == 0)
+	{
+		prepend_char(&inte, '0', f->minwid - 1);
+		if (f->sign == 1 && f->plus == 0 && f->space == 0)
+			prepend_char(&inte, '0', f->minwid);
+	}
 	if (f->sign == -1)
 		prepend_str(&inte, "-");
 	else if (f->plus == 1)
@@ -105,5 +109,5 @@ int			print_float(va_list *args, t_flags *f)
 	inte = ft_strsub(str, 6000, i - 5999);
 	ft_strrev(inte);
 	free(str);
-	return (apply_flags(inte, frac, f));
+	return (apply_flags(inte, frac, f, 0));
 }
