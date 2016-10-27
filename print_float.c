@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 22:27:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/26 16:52:15 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 16:59:33 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ int			print_float(va_list *args, t_flags *f)
 		a = va_arg(*args, long double);
 	else
 		a = va_arg(*args, double);
+	f->sign = a < 0 ? -1 : 1;
 	if ((i = handle_nan(a, f, 0)) >= 0)
 		return (i);
 	if (f->prec < 0)
 		f->prec = 6;
 	str = round_float(get_float(a), f->prec);
-	f->sign = a < 0 ? -1 : 1;
 	frac = ft_strsub(str, 6000 - f->prec, f->prec);
 	ft_strrev(frac);
 	i = 11999;
