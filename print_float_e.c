@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 19:35:36 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/26 22:16:32 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/27 02:35:01 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ int			print_float_e(va_list *args, t_flags *f)
 	char		*inte;
 	int			i;
 
+	(f->lenmod != 7) ? (a = va_arg(*args, double)) : 0;
 	if (f->lenmod == 7)
 		a = va_arg(*args, long double);
-	else
-		a = va_arg(*args, double);
 	f->sign = a < 0 ? -1 : 1;
 	if ((i = handle_nan(a, f, 0)) >= 0)
 		return (i);
 	f->prec = (f->prec < 0) ? 6 : f->prec;
 	str = get_float(a);
 	i = 11999;
-	while (str[i] == '0')
+	while (str[i] == '0' && i >= 0)
 		i--;
+	i = i == -1 ? 6000 : i;
 	str = round_float(str, i - f->prec);
 	inte = ft_strsub(str, i, 1);
 	frac = ft_strsub(str, i - f->prec, f->prec);
