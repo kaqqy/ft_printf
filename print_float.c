@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 22:27:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/26 20:25:12 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 22:08:29 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int			print_float(va_list *args, t_flags *f)
 	i = 11999;
 	while (str[i] == '0' && i >= 5999)
 		i--;
-	inte = ft_strsub(str, 6000, i - 5999);
+	inte = ft_strsub(str, 6000, (i - 5999) <= 0 ? 1 : (i - 5999));
 	ft_strrev(inte);
 	free(str);
 	return (apply_flags(inte, frac, f, 0));
