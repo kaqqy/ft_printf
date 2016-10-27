@@ -6,30 +6,27 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 22:27:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/26 16:59:33 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 17:10:11 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_printf.h"
 
-static char	*round_float(char *str, int prec)
+char		*round_float(char *str, int pos)
 {
-	int		i;
-
-	i = 6000 - prec;
-	if (str[i - 1] >= '5')
-		str[i]++;
-	while (str[i] == '0' + 10)
+	if (str[pos - 1] >= '5')
+		str[pos]++;
+	while (str[pos] == '0' + 10)
 	{
-		str[i] = '0';
-		i++;
-		str[i]++;
+		str[pos] = '0';
+		pos++;
+		str[pos]++;
 	}
 	return (str);
 }
 
-static int	handle_nan(long double a, t_flags *f, int ret)
+int			handle_nan(long double a, t_flags *f, int ret)
 {
 	long double	nan;
 	char		*str;
@@ -99,7 +96,7 @@ int			print_float(va_list *args, t_flags *f)
 		return (i);
 	if (f->prec < 0)
 		f->prec = 6;
-	str = round_float(get_float(a), f->prec);
+	str = round_float(get_float(a), 6000 - f->prec);
 	frac = ft_strsub(str, 6000 - f->prec, f->prec);
 	ft_strrev(frac);
 	i = 11999;

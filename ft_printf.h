@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 21:51:29 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/26 14:27:16 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/26 17:10:04 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,6 @@ int				print_string(va_list *args, t_flags *f);
 int				print_char(va_list *args, t_flags *f);
 int				print_not_flag(t_flags *f);
 int				print_float(va_list *args, t_flags *f);
+char			*round_float(char *str, int pos);
+int				handle_nan(long double a, t_flags *f, int ret);
 #endif
