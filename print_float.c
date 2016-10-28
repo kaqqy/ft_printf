@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 22:27:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 18:34:22 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/27 18:44:37 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			handle_nan(long double a, t_flags *f, int ret)
 		str = ft_strdup("inf");
 	else
 		return (-1);
-	(f->conv == 'F') ? ft_strtoupper(str) : 0;
+	(f->conv >= 'A' && f->conv <= 'Z') ? ft_strtoupper(str) : 0;
 	if (f->sign == -1 && a == a)
 		prepend_str(&str, "-");
 	else if (f->plus == 1 && a == a)
