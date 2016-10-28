@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 22:27:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/26 22:08:29 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/27 18:34:22 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,20 @@ char		*round_float(char *str, int pos)
 
 int			handle_nan(long double a, t_flags *f, int ret)
 {
-	long double	nan;
 	char		*str;
 
-	nan = 0.0 / 0.0;
-	if (((long long*)&nan)[0] == ((long long*)&a)[0]
-			&& ((long long*)&nan)[1] == ((long long*)&a)[1])
+	if (a != a)
 		str = ft_strdup("nan");
 	else if (a == 1.0 / 0.0 || a == -1.0 / 0.0)
 		str = ft_strdup("inf");
 	else
 		return (-1);
 	(f->conv == 'F') ? ft_strtoupper(str) : 0;
-	if (f->sign == -1 && (a == 1.0 / 0.0 || a == -1.0 / 0.0))
+	if (f->sign == -1 && a == a)
 		prepend_str(&str, "-");
-	else if (f->plus == 1 && (a == 1.0 / 0.0 || a == -1.0 / 0.0))
+	else if (f->plus == 1 && a == a)
 		prepend_str(&str, "+");
-	else if (f->space == 1 && (a == 1.0 / 0.0 || a == -1.0 / 0.0))
+	else if (f->space == 1 && a == a)
 		prepend_str(&str, " ");
 	if (f->minus == 1)
 		append_char(&str, ' ', f->minwid);

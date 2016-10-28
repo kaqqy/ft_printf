@@ -6,14 +6,14 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 01:50:49 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 18:28:29 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/27 18:32:26 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_printf.h"
 
-static int	apply_flags(char *str, t_flags *f)
+static int	apply_flags(char *inte, t_flags *f)
 {
 	int		ret;
 
@@ -59,7 +59,8 @@ static int	apply_flags_e(char *str, int i, int j, t_flags *f)
 	free(frac);
 	(f->conv == 'G') ? append_str(&inte, "E") : append_str(&inte, "e");
 	(i >= 6000) ? append_str(&inte, "+") : append_str(&inte, "-");
-	exp = ft_itoa_base((i >= 6000) ? (i - 6000) : (6000 - i));
+	exp = ft_itoa_base((i >= 6000) ? (i - 6000) : (6000 - i), 10);
+	prepend_char(&exp, '0', 2);
 	append_str(&inte, exp);
 	free(exp);
 	return (apply_flags(inte, f));

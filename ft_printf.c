@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 20:06:35 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 02:33:37 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/27 18:29:27 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	print_conversion_p2(char **pos, va_list *args, t_flags *f)
 		return (print_float(args, f));
 	if ((*pos)[-1] == 'e' || (*pos)[-1] == 'E')
 		return (print_float_e(args, f));
-/*	if ((*pos)[-1] == 'g' || (*pos)[-1] == 'G')
+	if ((*pos)[-1] == 'g' || (*pos)[-1] == 'G')
 		return (print_float_g(args, f));
-	if ((*pos)[-1] == 'a' || (*pos)[-1] == 'A')
+/*	if ((*pos)[-1] == 'a' || (*pos)[-1] == 'A')
 		return (print_float_hex(args, f));
 	if ((*pos)[-1] == 'n')
 		return (store_numchar(args, f));*/
