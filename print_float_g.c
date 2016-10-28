@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 01:50:49 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 18:32:26 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/27 18:38:49 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static int	apply_flags_e(char *str, int i, int j, t_flags *f)
 	char	*exp;
 
 	j = (i - f->prec < j) ? j : i - f->prec + 1;
+	str = round_float(str, j);
 	inte = ft_strsub(str, i, 1);
 	frac = ft_strsub(str, j, i - j);
 	ft_strrev(inte);
@@ -72,6 +73,7 @@ static int	apply_flags_f(char *str, int i, int j, t_flags *f)
 	char	*frac;
 
 	j = (i - f->prec < j) ? j : i - f->prec + 1;
+	str = round_float(str, j);
 	inte = ft_strsub(str, 6000, (i - 5999) <= 0 ? 1 : (i - 5999));
 	frac = ft_strsub(str, j, 6000 - j);
 	ft_strrev(inte);
