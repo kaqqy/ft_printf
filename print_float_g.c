@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 01:50:49 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 18:38:49 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/27 18:40:20 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static int	apply_flags_f(char *str, int i, int j, t_flags *f)
 	frac = ft_strsub(str, j, 6000 - j);
 	ft_strrev(inte);
 	ft_strrev(frac);
+	insert_commas(&inte, f->apos);
 	if (f->pound == 1 || ft_strlen(frac) > 0)
 		append_str(&inte, ".");
 	append_str(&inte, frac);
