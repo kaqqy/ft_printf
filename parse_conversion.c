@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 21:44:08 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 18:04:42 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 20:44:32 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ void	set_lenmod(char **pos, t_flags *f)
 		f->lenmod = 6;
 	else if ((*pos)[0] == 'L')
 		f->lenmod = 7;
+	else if ((*pos)[0] == 't')
+		f->lenmod = 8;
 	if (f->lenmod == 1 || f->lenmod == 4)
 		(*pos) += 2;
 	else if (f->lenmod > 0)

@@ -6,11 +6,12 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/21 14:05:37 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 17:18:25 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 20:46:14 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stddef.h>
 #include "ft_printf.h"
 
 char	*ft_itoa_base(uintmax_t n, int base)
@@ -58,6 +59,8 @@ char	*get_signed_int(va_list *args, t_flags *f, int base)
 		a = va_arg(*args, intmax_t);
 	else if (f->lenmod == 6)
 		a = va_arg(*args, ssize_t);
+	else if (f->lenmod == 8)
+		a = va_arg(*args, ptrdiff_t);
 	else
 		a = va_arg(*args, int);
 	f->sign = 1;

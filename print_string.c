@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/24 22:11:26 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 16:19:03 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 20:31:39 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,22 @@ int			print_string(va_list *args, t_flags *f)
 	{
 		str = va_arg(*args, char*);
 		return (apply_flags(str ? ft_strdup(str) : ft_strdup("(null)"), f));
+	}
+	return (apply_flags(str, f));
+}
+
+int			print_nonprint(va_list *args, t_flags *f)
+{
+	char	*str;
+	int		i;
+
+	str = va_arg(*args, char*);
+	str = str ? ft_strdup(str) : ft_strdup("(null)");
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] < 32 || str[i] > 126)
+			str[i] = '.';
 	}
 	return (apply_flags(str, f));
 }

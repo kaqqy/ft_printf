@@ -6,10 +6,11 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 13:56:47 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 16:15:59 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 20:24:25 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "ft_printf.h"
 
 void	ft_strrev(char *str)
@@ -28,4 +29,11 @@ void	ft_strrev(char *str)
 		str[i] = str[len - i - 1];
 		str[len - i - 1] = tmp;
 	}
+}
+
+void	empty_string(char **str)
+{
+	free(*str);
+	*str = (char*)malloc(sizeof(**str));
+	(*str)[0] = '\0';
 }

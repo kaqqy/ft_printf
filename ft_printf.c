@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 20:06:35 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 19:19:04 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 21:13:22 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 static int	print_conversion_p2(char **pos, va_list *args, t_flags *f)
 {
-	if ((*pos)[-1] == 'f' || (*pos)[-1] == 'F')
-		return (print_float(args, f));
 	if ((*pos)[-1] == 'e' || (*pos)[-1] == 'E')
 		return (print_float_e(args, f));
 	if ((*pos)[-1] == 'g' || (*pos)[-1] == 'G')
@@ -26,6 +24,18 @@ static int	print_conversion_p2(char **pos, va_list *args, t_flags *f)
 		return (print_float_hex(args, f));
 	if ((*pos)[-1] == 'n')
 		return (store_numchar(args, f));
+	if ((*pos)[-1] == 'b' || (*pos)[-1] == 'B')
+		return (print_binary(get_unsigned_int(args, f, 2), f));
+	if ((*pos)[-1] == 'q' || (*pos)[-1] == 'Q')
+		return (print_quat(get_unsigned_int(args, f, 4), f));
+	if ((*pos)[-1] == 'r')
+		return (print_nonprint(args, f));
+	if ((*pos)[-1] == 'v')
+		return (print_color_text(f));
+	if ((*pos)[-1] == 'w')
+		return (print_color_bg(f));
+	if ((*pos)[-1] == 'y')
+		return (print_color_reset());
 	if ((*pos)[-1] != '\0')
 		return (print_not_flag(f));
 	(*pos)--;
@@ -55,6 +65,8 @@ static int	print_conversion(char **pos, va_list *args, t_flags *f)
 		return (print_string(args, f));
 	if ((*pos)[-1] == 'c' || (*pos)[-1] == 'C')
 		return (print_char(args, f));
+	if ((*pos)[-1] == 'f' || (*pos)[-1] == 'F')
+		return (print_float(args, f));
 	return (print_conversion_p2(pos, args, f));
 }
 
