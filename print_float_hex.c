@@ -6,14 +6,14 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 19:18:29 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/28 19:41:09 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 21:38:08 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_printf.h"
 
-static void	round_float_hex(char **str, t_flags *f)
+static void	round_float_hex(char **str, t_flags *f, int *exp)
 {
 	int		i;
 
@@ -39,10 +39,11 @@ static void	round_float_hex(char **str, t_flags *f)
 	{
 		(*str)[i] = '0';
 		prepend_str(str, "1");
+		(*exp) += 4;
 	}
 }
 
-static char	*get_float_hex(long double a, t_flags *f)
+static char	*get_float_hex(long double a, t_flags *f, int *exp)
 {
 	char	*str;
 	int		i;
@@ -62,7 +63,7 @@ static char	*get_float_hex(long double a, t_flags *f)
 	}
 	str[++i] = '\0';
 	if (f->prec >= 0 && f->prec < i - 1)
-		round_float_hex(&str, f);
+		round_float_hex(&str, f, exp);
 	return (str);
 }
 
@@ -115,7 +116,7 @@ int			print_float_hex(va_list *args, t_flags *f)
 		a *= 2;
 	while (a >= 2 * min && a != 0.0 && ++exp > -100000)
 		a /= 2;
-	str = get_float_hex(a, f);
+	str = get_float_hex(a, f, &exp);
 	i = apply_flags(exp, f, ft_strsub(str, 0, 1),
 			ft_strsub(str, 1, (f->prec < 0) ? (ft_strlen(str) - 1) : f->prec));
 	free(str);
