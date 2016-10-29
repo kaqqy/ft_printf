@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 20:06:35 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 18:29:27 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/27 19:19:04 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static int	print_conversion_p2(char **pos, va_list *args, t_flags *f)
 		return (print_float_e(args, f));
 	if ((*pos)[-1] == 'g' || (*pos)[-1] == 'G')
 		return (print_float_g(args, f));
-/*	if ((*pos)[-1] == 'a' || (*pos)[-1] == 'A')
+	if ((*pos)[-1] == 'a' || (*pos)[-1] == 'A')
 		return (print_float_hex(args, f));
 	if ((*pos)[-1] == 'n')
-		return (store_numchar(args, f));*/
+		return (store_numchar(args, f));
 	if ((*pos)[-1] != '\0')
 		return (print_not_flag(f));
 	(*pos)--;
@@ -60,12 +60,11 @@ static int	print_conversion(char **pos, va_list *args, t_flags *f)
 
 int			ft_printf(const char *format, ...)
 {
-	int		num_char;
 	char	*pos;
 	va_list	args;
 	t_flags	f;
 
-	num_char = 0;
+	f.num_char = 0;
 	pos = (char*)format;
 	va_start(args, format);
 	va_copy(f.arg_start, args);
@@ -74,15 +73,15 @@ int			ft_printf(const char *format, ...)
 		if (*pos != '%')
 		{
 			write(1, pos, 1);
-			num_char++;
+			f.num_char++;
 			pos++;
 		}
 		else
 		{
 			pos++;
-			num_char += print_conversion(&pos, &args, &f);
+			f.num_char += print_conversion(&pos, &args, &f);
 		}
 	}
 	va_end(args);
-	return (num_char);
+	return (f.num_char);
 }

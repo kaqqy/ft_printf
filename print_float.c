@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/25 22:27:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 18:44:37 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 17:20:02 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,20 @@
 
 char		*round_float(char *str, int pos)
 {
-	if (str[pos - 1] >= '5')
+	int		i;
+
+	i = 0;
+	while (str[i] == '0')
+		i++;
+	if (pos < 1 || pos >= 12000)
+		return (str);
+	if (i == pos - 1 && str[pos - 1] == '5')
+	{
+		if ((str[pos] - '0') % 2 == 0)
+			return (str);
+		str[pos]++;
+	}
+	else if (str[pos - 1] >= '5')
 		str[pos]++;
 	while (str[pos] == '0' + 10)
 	{

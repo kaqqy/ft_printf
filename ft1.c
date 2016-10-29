@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/21 15:09:10 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/25 22:57:51 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 18:57:57 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_strsub(char *str, int start, int len)
 	int		slen;
 	char	*sub;
 
-	if (!str || (slen = ft_strlen(str)) <= start + len ||
+	if (!str || (slen = ft_strlen(str)) < start + len ||
 			!(sub = (char*)malloc(sizeof(*sub) * (len + 1))))
 		return (NULL);
 	sub[len] = '\0';

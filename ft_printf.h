@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 21:51:29 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 18:29:54 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 01:13:34 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_flags
 	uintmax_t	num;
 	char		conv;
 	va_list		arg_start;
+	int			num_char;
 }				t_flags;
 int				ft_printf(const char *format, ...);
 void			set_arg(char **pos, va_list *args, t_flags *f);
@@ -63,6 +64,8 @@ int				print_not_flag(t_flags *f);
 int				print_float(va_list *args, t_flags *f);
 int				print_float_e(va_list *args, t_flags *f);
 int				print_float_g(va_list *args, t_flags *f);
+int				print_float_hex(va_list *args, t_flags *f);
+int				store_numchar(va_list *args, t_flags *f);
 char			*round_float(char *str, int pos);
 int				handle_nan(long double a, t_flags *f, int ret);
 #endif
