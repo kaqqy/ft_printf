@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 19:18:29 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/28 19:02:32 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/28 19:41:09 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ static char	*get_float_hex(long double a, t_flags *f)
 
 static int	apply_flags(int exp, t_flags *f, char *inte, char *frac)
 {
-	if (f->pound == 1 || ft_strlen(frac) > 0)
+	if (f->pound == 1 || ft_strlen(frac) > 0 || f->prec > 0)
 		append_str(&inte, ".");
+	append_char(&frac, '0', f->prec);
 	append_str(&inte, frac);
 	free(frac);
 	(exp < 0) ? append_str(&inte, "p-") : append_str(&inte, "p+");
