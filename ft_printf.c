@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 20:06:35 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/28 21:13:22 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/31 16:28:19 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static int	print_conversion_p2(char **pos, va_list *args, t_flags *f)
 	if ((*pos)[-1] == 'r')
 		return (print_nonprint(args, f));
 	if ((*pos)[-1] == 'v')
-		return (print_color_text(f));
+		return (print_color_text(args));
 	if ((*pos)[-1] == 'w')
-		return (print_color_bg(f));
+		return (print_color_bg(args));
 	if ((*pos)[-1] == 'y')
 		return (print_color_reset());
 	if ((*pos)[-1] != '\0')

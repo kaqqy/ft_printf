@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 21:51:29 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/28 21:13:09 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/31 16:28:33 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int				print_float_hex(va_list *args, t_flags *f);
 int				store_numchar(va_list *args, t_flags *f);
 char			*round_float(char *str, int pos);
 int				handle_nan(long double a, t_flags *f, int ret);
-int				print_color_text(t_flags *f);
-int				print_color_bg(t_flags *f);
+int				print_color_text(va_list *args);
+int				print_color_bg(va_list *args);
 int				print_color_reset(void);
 #endif
