@@ -6,7 +6,7 @@
 #    By: jshi <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/18 21:00:39 by jshi              #+#    #+#              #
-#    Updated: 2016/10/28 21:14:07 by jshi             ###   ########.fr        #
+#    Updated: 2016/10/31 16:23:09 by jshi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
-	ar rc $(NAME) $(OBJ_FILES)
+	ar rcs $(NAME) $(OBJ_FILES)
 
 $(OBJ_FILES): $(SRC_FILES)
 	gcc $(CFLAGS) -c $(SRC_FILES)
