@@ -6,7 +6,7 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 01:50:49 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/27 18:40:20 by jshi             ###   ########.fr       */
+/*   Updated: 2016/11/01 00:57:13 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ static int	apply_flags_f(char *str, int i, int j, t_flags *f)
 
 	j = (i - f->prec < j) ? j : i - f->prec + 1;
 	str = round_float(str, j);
+	while (str[j] == '0' && j < 6000)
+		j++;
 	inte = ft_strsub(str, 6000, (i - 5999) <= 0 ? 1 : (i - 5999));
 	frac = ft_strsub(str, j, 6000 - j);
 	ft_strrev(inte);

@@ -6,17 +6,15 @@
 /*   By: jshi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/27 19:18:29 by jshi              #+#    #+#             */
-/*   Updated: 2016/10/28 21:38:08 by jshi             ###   ########.fr       */
+/*   Updated: 2016/10/31 16:38:03 by jshi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_printf.h"
 
-static void	round_float_hex(char **str, t_flags *f, int *exp)
+static void	round_float_hex(char **str, t_flags *f, int *exp, int i)
 {
-	int		i;
-
 	if ((*str)[f->prec + 1] == '8' && !(*str)[f->prec + 2])
 	{
 		if (((*str)[f->prec] <= '9' && (*str)[f->prec] % 2 == 1) ||
@@ -63,7 +61,7 @@ static char	*get_float_hex(long double a, t_flags *f, int *exp)
 	}
 	str[++i] = '\0';
 	if (f->prec >= 0 && f->prec < i - 1)
-		round_float_hex(&str, f, exp);
+		round_float_hex(&str, f, exp, 0);
 	return (str);
 }
 
